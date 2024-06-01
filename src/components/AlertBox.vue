@@ -1,7 +1,7 @@
 <template>
   <section class="toast toast-center bottom-8" data-testid="alert-box">
     <div class="alert" id="alert" :class="className">
-      <div class="icon-[ph--bell-fill] h-6 w-6"></div>
+      <div class="icon-[ph--bell-fill] size-6"></div>
       <div>
         <h3 class="font-bold">{{ song.alert.type.toUpperCase() }}</h3>
         <div class="text-sm">{{ song.alert.message }}</div>

@@ -29,30 +29,30 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code repository
-        uses: actions/checkout@v3
-      - name: Cache Node packages
-        uses: actions/cache@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Cache packages
+        uses: actions/cache@v4
         with:
           path: |
             .cache
             node_modules
           key: >-
-            node-20_${{ runner.os }}_pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+            node-22_${{ runner.os }}_pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install Just
+        run: >-
+          curl -LSfs https://just.systems/install.sh | bash -s -- --to
+          /usr/local/bin
       - name: Install Node interpreter
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "20"
-      - name: Install Node packages
-        run: |
-          node --version
-          corepack enable pnpm
-          pnpm --version
-          pnpm install --frozen-lockfile
+          node-version: "22"
+      - name: Install development dependencies
+        run: just setup
       - name: Build website
-        run: pnpm build
-      - name: Publish documentation
-        uses: peaceiris/actions-gh-pages@v3
+        run: just build
+      - name: Publish website
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ github.token }}
           publish_dir: dist
