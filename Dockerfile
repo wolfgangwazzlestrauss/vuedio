@@ -8,7 +8,7 @@ WORKDIR /repo
 
 COPY . .
 
-RUN corepack enable pnpm && pnpm install --frozen-lockfile && pnpm build
+RUN npm ci && npm run build
 
 FROM nginxinc/nginx-unprivileged:1.25.5-alpine3.19
 

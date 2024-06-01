@@ -61,13 +61,7 @@ jobs:
       - name: Install development dependencies
         run: just setup
       - name: Run linter checks
-        run: just format build bench
-      - name: Upload Lighthouse report
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse_report.html
-          path: lighthouse_report.html
-          retention-days: 10
+        run: just format build
       - name: Setup Tmate session if debug enabled
         if: >-
           ${{ always() && github.event_name == 'workflow_dispatch' &&

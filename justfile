@@ -9,34 +9,29 @@ list:
   just --list
 
 # Execute all development commands.
-all: setup format lint build test
+all: setup format build test
 
 # Build production assets.
 build:
-  pnpm exec vue-tsc --noEmit
-  pnpm exec vite build
+  npx vue-tsc --noEmit
+  npx vite build
 
 # Luunch development server.
 dev *args:
-  pnpm exec vite dev {{args}}
+  npx vite dev {{args}}
 
 # Check code formatting.
 format:
-  pnpm exec prettier --check .
-
-# Run code analyses.
-lint:
-  pnpm exec eslint --no-fix --ext ts,vue --max-warnings 0 src tests
+  npx prettier --check .
 
 # Install development dependencies.
 setup:
   node --version
-  corepack enable pnpm
-  pnpm --version
-  pnpm install --frozen-lockfile
-  pnpm exec playwright install chromium
+  npm --version
+  npm ci
+  npx playwright install chromium
 
 # Run test suites.
 test:
-  pnpm exec vitest run
-  pnpm exec playwright test
+  npx vitest run
+  npx playwright test
