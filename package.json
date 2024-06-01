@@ -5,6 +5,7 @@
     "vue": "^3.4.27"
   },
   "devDependencies": {
+    "@babel/types": "^7.24.6",
     "@iconify-json/ph": "^1.1.13",
     "@iconify/tailwind": "^1.1.1",
     "@playwright/test": "^1.44.1",
@@ -20,7 +21,7 @@
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.6.1",
     "tailwindcss": "^3.4.3",
-    "typescript": "~5.4.5",
+    "typescript": "~5.3.3",
     "vite": "^5.2.12",
     "vitest": "^1.6.0",
     "vue-tsc": "^2.0.19"
@@ -35,6 +36,5 @@
     "test": "vitest run && playwright test"
   },
   "type": "module",
-  "version": "0.2.0",
-  "packageManager": "pnpm@8.15.6+sha1.8105075ad0aa306138be128c017e9c41e28ecffa"
+  "version": "0.2.0"
 }
